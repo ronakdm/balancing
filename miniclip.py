@@ -5,6 +5,8 @@ import torch.nn.functional as F
 import open_clip
 from transformers import GPT2Tokenizer, GPT2LMHeadModel, AutoTokenizer, BertForMaskedLM
 
+MODEL_DIR = "~/balancing/models" # TODO: Change this to where the models are on your machine!
+
 ####################################
 # MODEL DEFINITIONS
 ####################################
@@ -157,7 +159,7 @@ def load_head_model(model_name):
         }
         model = MiniCLIP(**model_cfg)
 
-    output_dir = "~/balancing/models/" # TODO: Change this to where the models are on your machine!
+    output_dir = MODEL_DIR
     model.load_state_dict(torch.load(os.path.join(output_dir, f"{model_name}.pt")))
     return model
 

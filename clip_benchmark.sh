@@ -10,7 +10,6 @@ do
     clip_benchmark eval --dataset=$dataset \
     --task=zeroshot_classification \
     --pretrained='laion2b_s34b_b79k' \
-    --device=$device \
     --model=$model \
     --model_type=$model_type \
     --output="${dataset}_${model}.json" \

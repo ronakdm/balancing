@@ -36,10 +36,11 @@ The files in the repo can be used for the following purposes.
 pip install clip-benchmark
 ```
 For background, you may read the [instructions](https://github.com/LAION-AI/CLIP_benchmark?tab=readme-ov-file#how-to-add-other-clip-models) on adding custom CLIP models. However, we provide the script that needs to be added to your CLIP Benchmark installation in order to allow zero-shot prediction. Follow these steps:
-1. Place the `miniclip.py` file into `clip_benchmark/models` (this covers steps 1 and 2 of the instructions above).
-2. Add the `load_miniclip` function at the bottom of the file into the `TYPE2FUNC` dictionary in `clip_benchmark/models/__init__.py`. 
-3. CLIP Benchmark runs with a command line interface which downloads evaluation datasets dynamically. We have included a bash script `clip_benchmark.sh` with the commands needed. You can simply change the `root` variable to a directory that can store the downloaded data. Then, change the `model` variable to one of `joint_clip`, `orig_clip`, or `double_clip`, referring to the variants with 0, 1, or 2 iterations of balancing (see Section 4 of the manuscript).
-4. Run the script to generate a `.json` output containing the results, as well as a printout. You may also add additional zero-shot evaluation datasets included in CLIP Benchmark by adding their names to the `clip_benchmark.sh` script.
+1. Change the `MODEL_DIR` variable in the `miniclip.py` script to the absolute path where the `balancing/models` folder lives on your machine.
+2. Place the `miniclip.py` file into `clip_benchmark/models` folder in your particular installation of `clip_benchmark` (this covers steps 1 and 2 of the instructions above).
+3. Add the `load_miniclip` function at the bottom of the file into the `TYPE2FUNC` dictionary in `clip_benchmark/models/__init__.py`. 
+4. CLIP Benchmark runs with a command line interface which downloads evaluation datasets dynamically. We have included a bash script `clip_benchmark.sh` with the commands needed. You can simply change the `root` variable to a directory that can store the downloaded data. Then, change the `model` variable to one of `joint_clip`, `orig_clip`, or `double_clip`, referring to the variants with 0, 1, or 2 iterations of balancing (see Section 4 of the manuscript).
+5. Run the script to generate a `.json` output containing the results, as well as a printout. You may also add additional zero-shot evaluation datasets included in CLIP Benchmark by adding their names to the `clip_benchmark.sh` script.
 
 **Model Architecture:** Because models are loaded within the identify files (e.g. `miniclip.py`), all model definitions and base embeddings are in this file. The saved files refer to the "head" models. 
 
