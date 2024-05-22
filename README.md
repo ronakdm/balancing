@@ -29,7 +29,7 @@ pip install torch --index-url https://download.pytorch.org/whl/cu118
 
 The files in the repo can be used for the following purposes.
 
-**Illustration:** The notebook `illustration.ipynb` contains a walkthrough of the balancing procecdure applied to an empirical joint distribution. It produces visuals of the joint probability mass function and the individual marginals after applying each iteration of the procedure.
+**Illustration:** The notebook `illustration.ipynb` contains a walkthrough of the balancing procecdure applied to an empirical joint distribution. It produces visuals of the joint probability mass function and the individual marginals after applying each iteration of the procedure. Similarly, `real_data.ipynb` considers extending the method to different CLIP losses and reproduces Figure 3 from the manuscript.
 
 **Zero-Shot Evaluation:** Evaluation was done by using [CLIP benchmark](https://github.com/LAION-AI/CLIP_benchmark) repo. First, install the package using:
 ```
