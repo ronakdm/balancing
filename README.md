@@ -10,7 +10,7 @@ Given an initial probability measure $R$ over $\mathcal{X} \times \mathcal{Y}$ a
 $$
     R = R_X R_{Y|X} \mapsto P_X R_{Y|X} \text{ or } R = R_Y R_{X|Y} \mapsto P_Y R_{X|Y},
 $$
-where $R_X$ and $R_Y$ are the marginals of $R$ and $R_{Y|X}$ and $R_{X|Y}$ are the respective conditional distributions. This codebase contains scripts and notebooks to apply this procedure in the context of standard data analysis and defining a loss for CLIP models.
+where $R_X$ and $R_Y$ are the marginals of $R$, while $R_{Y|X}$ and $R_{X|Y}$ are the respective conditional distributions. This codebase contains scripts and notebooks to apply this procedure in the context of standard data analysis and defining a loss for CLIP models.
 
 ## Dependencies
 
