@@ -1,0 +1,1 @@
+{"dataset": "stl10", "model": "double_bert_b128", "pretrained": "laion2b_s34b_b79k", "task": "zeroshot_classification", "metrics": {"acc1": 0.811, "acc5": 0.997125, "mean_per_class_recall": 0.81425}, "language": "en"}

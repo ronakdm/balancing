@@ -1,0 +1,1 @@
+{"dataset": "stl10", "model": "clip_separate_b128", "pretrained": "laion2b_s34b_b79k", "task": "zeroshot_classification", "metrics": {"acc1": 0.65, "acc5": 0.9845, "mean_per_class_recall": 0.6493749999999998}, "language": "en"}

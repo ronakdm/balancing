@@ -1,0 +1,1 @@
+{"dataset": "cifar100", "model": "double_bert", "pretrained": "laion2b_s34b_b79k", "task": "zeroshot_classification", "metrics": {"acc1": 0.3081, "acc5": 0.6781, "mean_per_class_recall": 0.30779999999999996}, "language": "en"}

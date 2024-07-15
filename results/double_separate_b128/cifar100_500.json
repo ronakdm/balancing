@@ -1,0 +1,1 @@
+{"dataset": "cifar100", "model": "double_separate_b128", "pretrained": "laion2b_s34b_b79k", "task": "zeroshot_classification", "metrics": {"acc1": 0.0606, "acc5": 0.1999, "mean_per_class_recall": 0.060200000000000004}, "language": "en"}

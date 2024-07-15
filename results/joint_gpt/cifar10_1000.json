@@ -1,0 +1,1 @@
+{"dataset": "cifar10", "model": "joint_gpt", "pretrained": "laion2b_s34b_b79k", "task": "zeroshot_classification", "metrics": {"acc1": 0.0948, "acc5": 0.526, "mean_per_class_recall": 0.1076}, "language": "en"}

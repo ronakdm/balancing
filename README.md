@@ -1,5 +1,7 @@
 # The Benefits of Balance: Variance Reduction via Measure Optimization
 
+This repository contains code and experiments for "The Benefits of Balance: Variance Reduction via Measure Optimization". Please find instructions on software/hardware dependencies, reproducing all results from the manuscript below, and additional illustrations below.
+
 ## Abstract
 
 Data balancing across multiple modalities or sources is used in various forms in several foundation models (e.g., CLIP, DINO), leading to superior performance. While data balancing algorithms are often motivated by other considerations, we argue that they have an unsuspected benefit when learning with batched stochastic empirical risk minimization: variance reduction via measure optimization. We provide non-asymptotic bounds for the mean squared error of the data balancing estimator and quantify its variance reduction. We show that this reduction effect is related to the decay of the spectrum of two particular Markov operators, and that the data balancing algorithms perform measure optimization. We explain how various forms of data balancing in contrastive multimodal learning and self-supervised learning can be interpreted as instances of this variance reduction scheme.
@@ -12,24 +14,36 @@ $$
     R = R_X R_{Y|X} \mapsto P_X R_{Y|X} \text{ or } R = R_Y R_{X|Y} \mapsto P_Y R_{X|Y},
 $$
 
-where $R_X$ and $R_Y$ are the marginals of $R$, while $R_{Y|X}$ and $R_{X|Y}$ are the respective conditional distributions. This codebase contains scripts and notebooks to apply this procedure in the context of standard data analysis and defining a loss for CLIP models.
+where $R_X$ and $R_Y$ are the marginals of $R$, while $R_{Y|X}$ and $R_{X|Y}$ are the respective conditional distributions. In the paper, we describe how this procedure lies at the heart of common self-supervised learning (SSL) approaches such as self-labeling and constrastive learning. This codebase contains scripts and notebooks to apply this procedure in the context of both standard data analysis and CLIP training by modifying the loss function.
 
 ## Dependencies
 
-We recommend a hardware environment has at least 32GB CPU RAM and a GPU with at least 12GB RAM. The code runs in Python 3 with the standard Python scientific stack along with Huggingface `transformers`. These packages can be downloaded using `pip` by running
+We recommend a hardware environment has at least 32GB CPU RAM and a GPU with at least 12GB RAM for ease of use. The code runs in Python 3 with the standard Python scientific stack along with PyTorch and packages built on top of it.
+These packages can be downloaded using `pip` by running:
 ```
 pip install numpy scipy pandas matplotlib seaborn transformers
 ```
-In addition, please install PyTorch following the [installation instructions](https://pytorch.org/get-started/locally/) for your particular CUDA distribution. For example, for CUDA 11.8, run:
+Next, please install PyTorch following the [installation instructions](https://pytorch.org/get-started/locally/) for your particular CUDA distribution. For example, for CUDA 11.8, run:
 ```
 pip install torch --index-url https://download.pytorch.org/whl/cu118
 ```
+Finally, we reply on Huggingface `transformers` (installed via `pip install transformers`), [OpenCLIP](https://github.com/mlfoundations/open_clip), and [CLIP Benchmark](https://github.com/LAION-AI/CLIP_benchmark). For the latter two, see the links for up-to-date installation information.
+
 
 ## Code
 
 The files in the repo can be used for the following purposes.
 
-**Illustration:** The notebook `illustration.ipynb` contains a walkthrough of the balancing procecdure applied to an empirical joint distribution. It produces visuals of the joint probability mass function and the individual marginals after applying each iteration of the procedure. Similarly, `real_data.ipynb` considers extending the method to different CLIP losses and reproduces Figure 3 from the manuscript.
+**Reproduction:** To reproduce the main experimental figures from the paper, use the following files in the `notebooks` folder.
+
+| Figure      | File |
+| ----------- | ----------- |
+| 2   | `figure_zero_shot.ipynb`  |
+| 3   | `figure_marginals.ipynb`  |
+| 5   | `figure_metaclip.ipynb`   |
+The figures are produced using the zero-shot evaluation results that are in the `results` folder. The remaining sections show how to reproduce these results step-by-step.
+
+**Continued Pre-Training**: 
 
 **Zero-Shot Evaluation:** Evaluation was done by using [CLIP benchmark](https://github.com/LAION-AI/CLIP_benchmark) repo. First, install the package using:
 ```
@@ -45,3 +59,5 @@ For background, you may read the [instructions](https://github.com/LAION-AI/CLIP
 **Model Architecture:** Because models are loaded within the identify files (e.g. `miniclip.py`), all model definitions and base embeddings are in this file. The saved files refer to the "head" models. 
 
 **Data:** The subset of ImageNet-Captions used is listed in `imagenet_captions_train_c250.csv` with a column for the filename of the ImageNet image and a column for the associated caption. Because the captions are included in the file, you can simply retrieve the images from the [ImageNet](https://www.image-net.org/download.php) dataset directly.
+
+**Illustration:** The notebook `illustration.ipynb` contains a walkthrough of the balancing procedure applied to an empirical joint distribution. It produces visuals of the joint probability mass function and the individual marginals after applying each iteration of the procedure. Similarly, `real_data.ipynb` considers extending the method to different CLIP losses and reproduces Figure 3 from the manuscript.

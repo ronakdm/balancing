@@ -1,0 +1,1 @@
+{"dataset": "stl10", "model": "double_gpt", "pretrained": "laion2b_s34b_b79k", "task": "zeroshot_classification", "metrics": {"acc1": 0.117, "acc5": 0.50225, "mean_per_class_recall": 0.11737500000000001}, "language": "en"}
