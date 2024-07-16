@@ -34,20 +34,22 @@ Finally, we reply on Huggingface `transformers` (installed via `pip install tran
 
 The files in the repo can be used for the following purposes.
 
-**Reproduction:** To reproduce the main experimental figures from the paper, use the following files in the `notebooks` folder.
+**Direct Reproduction:** To reproduce the main experimental figures from the paper, use the following files in the `notebooks` folder.
 
 | Figure      | File |
 | ----------- | ----------- |
 | 2   | `figure_zero_shot.ipynb`  |
 | 3   | `figure_marginals.ipynb`  |
 | 5   | `figure_metaclip.ipynb`   |
+
 The figures are produced using the zero-shot evaluation results that are in the `results` folder and the models in the `models` folder. 
-To go further and create the models and data, see `notebooks/create_imagenet_captions.ipynb` to see how the embeddings are generated. 
+To go further and recreate the models and data, see `notebooks/create_imagenet_captions.ipynb` to see how the embeddings are generated. 
+Similarly, the MetaCLIP data curation is carried out in the `notebooks/create_metaclip_dataset.ipynb`.
 The remaining sections show how to reproduce these results step-by-step.
 
-**Continued Pre-Training**: 
-
-**Zero-Shot Evaluation:** Evaluation was done by using [CLIP benchmark](https://github.com/LAION-AI/CLIP_benchmark) repo. First, install the package using:
+**Zero-Shot Evaluation:** Evaluation was done by using [CLIP benchmark](https://github.com/LAION-AI/CLIP_benchmark) repo. 
+The results are saved in `results/` but they can be recreated (along with other evaluations) using the following procedure.
+First, install the package using:
 ```
 pip install clip-benchmark
 ```
@@ -58,8 +60,7 @@ For background, you may read the [instructions](https://github.com/LAION-AI/CLIP
 4. CLIP Benchmark runs with a command line interface which downloads evaluation datasets dynamically. We have included a bash script `clip_benchmark.sh` with the commands needed. You can simply change the `root` variable to a directory that can store the downloaded data. Then, change the `model` variable to one of `joint_clip`, `orig_clip`, or `double_clip`, referring to the variants with 0, 1, or 2 iterations of balancing (see Section 4 of the manuscript).
 5. Run the script to generate a `.json` output containing the results, as well as a printout. You may also add additional zero-shot evaluation datasets included in CLIP Benchmark by adding their names to the `clip_benchmark.sh` script.
 
-**Model Architecture:** Because models are loaded within the identify files (e.g. `miniclip.py`), all model definitions and base embeddings are in this file. The saved files refer to the "head" models. 
-
-**Data:** The subset of ImageNet-Captions used is listed in `imagenet_captions_train_c250.csv` with a column for the filename of the ImageNet image and a column for the associated caption. Because the captions are included in the file, you can simply retrieve the images from the [ImageNet](https://www.image-net.org/download.php) dataset directly.
+**Model Architecture:** Because models are loaded within the identify files (e.g. `miniclip.py`), all model definitions and base embedding models are copied in this file. 
+Thus, only one file is needed to perform the custom evaluations in the previous step. The saved files refer to the "head" models. The architecture (without any OpenCLIP code) is stored in `src/multimodal_models.py`.
 
 **Illustration:** The notebook `illustration.ipynb` contains a walkthrough of the balancing procedure applied to an empirical joint distribution. It produces visuals of the joint probability mass function and the individual marginals after applying each iteration of the procedure. Similarly, `real_data.ipynb` considers extending the method to different CLIP losses and reproduces Figure 3 from the manuscript.
