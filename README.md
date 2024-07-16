@@ -63,4 +63,4 @@ For background, you may read the [instructions](https://github.com/LAION-AI/CLIP
 **Model Architecture:** Because models are loaded within the identify files (e.g. `miniclip.py`), all model definitions and base embedding models are copied in this file. 
 Thus, only one file is needed to perform the custom evaluations in the previous step. The saved files refer to the "head" models. The architecture (without any OpenCLIP code) is stored in `src/multimodal_models.py`.
 
-**Illustration:** The notebook `illustration.ipynb` contains a walkthrough of the balancing procedure applied to an empirical joint distribution. It produces visuals of the joint probability mass function and the individual marginals after applying each iteration of the procedure. Similarly, `real_data.ipynb` considers extending the method to different CLIP losses and reproduces Figure 3 from the manuscript.
+**Illustration:** The notebook `notebooks/illustration.ipynb` contains a walkthrough of the balancing procedure applied to an empirical joint distribution. It produces visuals of the joint probability mass function and the individual marginals after applying each iteration of the procedure.
