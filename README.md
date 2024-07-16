@@ -41,7 +41,9 @@ The files in the repo can be used for the following purposes.
 | 2   | `figure_zero_shot.ipynb`  |
 | 3   | `figure_marginals.ipynb`  |
 | 5   | `figure_metaclip.ipynb`   |
-The figures are produced using the zero-shot evaluation results that are in the `results` folder. The remaining sections show how to reproduce these results step-by-step.
+The figures are produced using the zero-shot evaluation results that are in the `results` folder and the models in the `models` folder. 
+
+The remaining sections show how to reproduce these results step-by-step.
 
 **Continued Pre-Training**: 
 
