@@ -1,0 +1,1 @@
+{"dataset": "stl10", "model": "metaclip", "pretrained": "laion2b_s34b_b79k", "task": "zeroshot_classification", "metrics": {"acc1": 0.543125, "acc5": 0.98975, "mean_per_class_recall": 0.543125}, "language": "en"}

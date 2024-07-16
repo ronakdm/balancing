@@ -22,29 +22,13 @@ class MultimodalEmbeddingDataset(Dataset):
             return i, self.x[i], self.y[i], self.z[i]
         else:
             return i, self.x[i], self.y[i]
-    
-def load_glove_embeddings(root, img_embed):
-    image_features = np.load(os.path.join(root, f"{img_embed}_image_features.npy"))
-
-    train_idx = np.load(os.path.join(root, f"glove_train_idx.npy"))
-    val_idx = np.load(os.path.join(root, f"glove_val_idx.npy"))
-
-    x_train = image_features[train_idx]
-    x_test = image_features[val_idx]
-    y_train = np.load(os.path.join(root, f"glove_train_embeds.npy"))
-    y_test = np.load(os.path.join(root, f"glove_val_embeds.npy"))
-
-    val_class_id = np.load(os.path.join(root, f"glove_val_class_id_labels.npy"))
-    val_class_embeds = np.load(os.path.join(root, f"glove_val_class_embeds.npy"))
-
-    return x_train, x_test, y_train, y_test, val_class_id, val_class_embeds
 
 def get_multimodal_dataloaders(
     batch_size, 
     rank,
     img_embed,
     txt_embed,
-    root="<path/to/imagenet>", 
+    root="<path/to/dataset>", 
 ):
     image_features = np.load(os.path.join(root, f"{img_embed}_image_features.npy"))
     text_features  = np.load(os.path.join(root, f"{txt_embed}_text_features.npy"))
