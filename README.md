@@ -1,6 +1,6 @@
-# The Benefits of Balance: Variance Reduction via Measure Optimization
+# The Benefits of Balance: From Information Projections to Variance Reduction
 
-This repository contains code and experiments for "The Benefits of Balance: Variance Reduction via Measure Optimization". Please find instructions on software/hardware dependencies, reproducing all results from the manuscript below, and additional illustrations below.
+This repository contains code and experiments for "The Benefits of Balance: From Information Projections to Variance Reduction" (NeurIPS '24). Please find instructions on software/hardware dependencies, reproducing all results from the manuscript below, and additional illustrations below.
 
 ## Abstract
 
@@ -87,3 +87,16 @@ For background, you may read the [instructions](https://github.com/LAION-AI/CLIP
 Thus, only one file is needed to perform the custom evaluations in the previous step. The saved files refer to the "head" models. The architecture (without any OpenCLIP code) is stored in `src/multimodal_models.py`.
 
 **Data:** The subset of ImageNet-Captions used is listed in `imagenet_captions_train_c250.csv` with a column for the filename of the ImageNet image and a column for the associated caption. Because the captions are included in the file, you can simply retrieve the images from the [ImageNet](https://www.image-net.org/download.php) dataset directly.
+
+## References
+
+If you found this repository useful, please consider citing the following paper.
+
+```
+@inproceedings{Liu2024TheBenefits,
+  title={{The Benefits of Balance: From Information Projections to Variance Reduction}},
+  author={Liu, Lang and Mehta, Ronak and Pal, Soumik and Harchaoui, Zaid},
+  booktitle={NeurIPS},
+  year={2024}
+}
+```
